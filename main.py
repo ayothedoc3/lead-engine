@@ -19,7 +19,7 @@ from typing import Optional
 import anthropic
 import httpx
 from fastapi import FastAPI, Header, HTTPException
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 from config import build_system_prompt, load_settings
 
@@ -41,7 +41,7 @@ app = FastAPI(title="60-Second Lead Engine")
 class LeadIn(BaseModel):
     """Flexible inbound payload — most form tools send at least name + email."""
     name: Optional[str] = None
-    email: EmailStr
+    email: str
     message: Optional[str] = None
     company: Optional[str] = None
     phone: Optional[str] = None
